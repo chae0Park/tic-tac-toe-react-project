@@ -1,28 +1,44 @@
 import { useState } from "react";
-// useState 와 handleEditClick 함수안에있는 setIsEditing이 왜 다른 함수에 의해 전달되어야하는지
-//왜 editing이라는 매개변수를 받아야하는지 찾아보기 
-export default function Player({name, symbol}){
+
+
+export default function Player({initialName, symbol, isActive, onChangeName}){
+    const [playerName, setPlayerName] = useState(initialName);
     const [ isEditing, setIsEditing ] = useState(false); 
 
     function handleEditClick(){
-        setIsEditing((editing) => !editing);
+        setIsEditing((editing) => !editing); 
+
+        if(isEditing){
+          onChangeName(symbol, playerName);
+        }
+        
     }
 
-    let playerName = <span className="player-name">{name}</span>
+    function handleChange(event){
+      setPlayerName(event.target.value);
+    }
+
+    let editablePlayerName = <span className="player-name">{playerName}</span>
     let btnCaption = 'Edit';
 
     if(isEditing){
-        playerName = <input type="text" required value={name} />;
-        btnCaption = 'Save';
+      editablePlayerName = (
+        <input type="text" required value={playerName} onChange={handleChange} /> 
+      );
+      btnCaption = 'Save';
     }
 
     return(
-        <li>
+        <li className={isActive ? "active" : undefined}>
           <span className="player">
-            {playerName}
+            {editablePlayerName}
             <span className="player-symbol">{symbol}</span>
           </span>
-          <button onClick={handleEditClick}>{btnCaption}</button>
+          <button 
+            onClick={handleEditClick}
+          >
+            {btnCaption}
+          </button>
           
         </li>
     )
