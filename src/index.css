@@ -180,15 +180,15 @@ ol {
 }
 
 #game-board button {
-  width: 8rem;
-  height: 8rem;
+  width: 2em;
+  height: 2em;
   border: none;
   background: #aca788;
   color: #3f3b00;
   font-size: 5rem;
   cursor: pointer;
   font-family: 'Caprasimo', cursive;
-  padding: 1rem;
+  padding: 0.5em;
 }
 
 #game-over {
@@ -348,5 +348,99 @@ ol {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+
+@media (max-width: 576px) {
+  /* 모바일 기기에 대한 일반적인 조정 */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #game-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  #players {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #players li {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* 게임 보드 크기 및 간격 조정 */
+  #game-board {
+    margin: 1rem 0;
+    gap: 0.5rem;
+  }
+  
+  #game-board ol {
+    gap: 0.5rem;
+  }
+  
+  #game-board button {
+    font-size: 3rem;
+    padding: 0.2em;
+  }
+  
+  /* 게임 오버 화면 조정 */
+  #game-over h2 {
+    font-size: 2.5rem;
+  }
+  
+  #game-over p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  #game-container {
+    padding: 0.8rem;
+  }
+  
+  /* 게임 보드 버튼 크기와 간격 조정 */
+  #game-board {
+    gap: 0.3rem;
+  }
+  
+  #game-board ol {
+    gap: 0.3rem !important;
+  }
+  
+  #game-board button {
+    font-size: 2.2rem;
+    width: 4em;
+    height: 4em;
+    padding: 0.1em;
+  }
+  
+  /* 플레이어 정보 조정 */
+  .player-name {
+    width: 8rem;
+    font-size: 0.9rem;
+  }
+  
+  .player input {
+    width: 8rem;
+    font-size: 0.9rem;
+  }
+  
+  /* 게임 힌트 및 로그 크기 조정 */
+  #game-hints h2 {
+    font-size: 1.5rem;
+  }
+  
+  #log {
+    max-width: 16rem;
   }
 }
